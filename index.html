@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carnaval</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+<body>
+  <div class="container">
+    <section class="content">
+      <div class="row">
+        <div class="text-content">
+          <h1>FESTA JUNINA</h1>
+          <h2>Venha conhecer um dos festivais mais famosos do Brasil!</h2>
+        </div>
+        <div class="image">
+          <img src="imgs/festa1.jpg" alt="Carnaval">
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="tabs">
+        <button class="tab-button" onclick="changeContent('origem')">Origem</button>
+        <button class="tab-button" onclick="changeContent('instrumentos')">Instrumentos</button>
+        <button class="tab-button" onclick="changeContent('estatisticas')">Estatísticas</button>
+        <button class="tab-button" onclick="changeContent('acidentes')">Segurança</button>
+      </div>
+      <div id="tab-content" class="tab-content">
+        <!-- Conteúdo dinâmico será inserido aqui -->
+        <p>Selecione uma aba para ver o conteúdo.</p>
+      </div>
+    </footer>
+  </div>
+  <script>
+    let currentSlide = 0;
+  
+    function changeSlide(direction) {
+      const slides = document.querySelectorAll(".slider-image");
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }
+  
+    function changeContent(tab) {
+      const tabContent = document.getElementById("tab-content");
+  
+      if (tab === "origem") {
+        tabContent.innerHTML = `
+        <div class="origem-content">
+            <div class="origem-header">
+              <img src="imgs/amp.png" alt="Ícone de origem" class="origem-icon">
+              <h2>ORIGEM</h2>
+            </div>
+         <div class="origem-body">
+  <div class="slider">
+    <img src="imgs/festa4.jpg" alt="Primeira imagem" class="slider-image active">
+    <img src="imgs/festa5.webp" alt="Segunda imagem" class="slider-image">
+    <div class="slider-buttons">
+      <button class="slider-prev" onclick="changeSlide(-1)">❮</button>
+      <button class="slider-next" onclick="changeSlide(1)">❯</button>
+    </div>
+  </div>
+  <!-- Alterar ordem: Mover o texto para baixo -->
+  <div class="origem-text">
+    <p>As festas juninas refletem a cultura e as mudanças sociais ao longo do tempo</p>
+    <p class="highlighted">Celebradas em junho, as festas juninas são tradições marcantes no Brasil.</p>
+  </div>
+</div>
+<div class="extra-text">
+  <h3>História e Tradição</h3>
+  <div class="textoAbaixo"> 
+    <p>As festas juninas no Brasil ganharam forte conexão com as culturas regionais, especialmente no Nordeste, onde se tornaram um símbolo de resistência cultural e orgulho identitário. Sociologicamente, esses eventos funcionam como rituais de reafirmação de laços sociais e de pertencimento a um grupo, reforçando a identidade coletiva em oposição à homogeneização cultural.</p>
+
+<p>Durante o período colonial, as festas juninas eram celebradas por diferentes classes sociais, mas com marcadas distinções. Os grandes senhores organizavam festas grandiosas em suas propriedades, enquanto as camadas mais populares celebravam de forma comunitária. Ainda hoje, pode-se observar como as festas juninas tanto aproximam quanto evidenciam desigualdades, especialmente nas diferenças entre as celebrações urbanas e rurais.</p>
+ <p>As festas juninas também refletem o embate entre a preservação das tradições e as transformações da modernidade. Elementos como a quadrilha, o uso de trajes típicos e os ritmos regionais (como o forró) são recriados e ressignificados em meio à globalização. Por exemplo, grandes cidades promovem festas juninas estilizadas, muitas vezes adaptadas para atender a novas demandas comerciais e culturais.</p>
+ <p>Segundo Émile Durkheim, rituais e celebrações coletivas desempenham um papel essencial na coesão social, reforçando os valores e as normas de uma sociedade. No caso das festas juninas, além de seu caráter religioso, elas também promovem solidariedade, socialização e uma oportunidade para que diferentes grupos interajam, fortalecendo o tecido social.</p>
+</div>
+</div>
+
+        `;
+      } else if (tab === "instrumentos") {
+        tabContent.innerHTML = `<body>
+ <div class="origem-content">
+            <div class="origem-header">
+              <img src="imgs/violao.png" alt="Ícone de origem" class="origem-icon">
+              <h2>INSTRUMENTOS</h2>
+            </div>
+    <table class="instruments-table">
+      <thead>
+        <tr>
+          <th>IMAGEM</th>
+          <th>NOME</th>
+          <th>DESCRIÇÃO</th>
+          <th>TIPO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="imgs/sanfona.jpg" alt="Sanfona" class="instrument-image">
+          </td>
+          <td>
+            Sanfona
+          </td>
+          <td>
+            Instrumento de teclado e fole. O som é produzido pela passagem do ar sobre palhetas metálicas enquanto o fole é comprimido ou expandido.
+            <br>Combinação de melodias e acordes: Amplamente usado no forró e no baião, estilos típicos das festas juninas.
+          </td>
+          <td>
+            Instrumento de tecla e sopro
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="imgs/triangulo.png" alt="Triângulo" class="instrument-image">
+          </td>
+          <td>
+            Triângulo
+          </td>
+          <td>
+            Feito de metal dobrado em forma triangular, o som é gerado pela vibração do material ao ser percutido por uma haste metálica. 
+            <br>Ressonância: Produz sons agudos que atravessam outros instrumentos no ritmo do forró.
+          </td>
+          <td>
+            Percussão
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="imgs/zabumba.png" alt="Zabumba" class="instrument-image">
+          </td>
+          <td>
+            Zabumba
+          </td>
+          <td>
+            Tambor de dupla face usado no forró. O som grave é produzido ao bater com uma baqueta maior, e o som agudo, com uma baqueta menor no lado oposto.
+            <br>Marca o ritmo: Essencial nas festas juninas para cadenciar o baião e o xote.
+          </td>
+          <td>
+            Percussão
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="imgs/pifano.png" alt="Pífano" class="instrument-image">
+          </td>
+          <td>
+            Pífano
+          </td>
+          <td>
+            Flauta rústica feita de bambu ou madeira. Produz som ao soprar nas extremidades e ao tapar ou destapar os orifícios para criar notas diferentes.
+            <br>Sonoridade característica: Comum em grupos de música folclórica das festas juninas.
+          </td>
+          <td>
+            Instrumento de sopro
+          </td>
+        </tr>
+      </tbody>
+    </table>
+        `;
+}
+ else if (tab === "estatisticas") {
+    tabContent.innerHTML = `
+<div class="origem-content">
+          <div class="estatisticas-content">
+ <div class="origem-content">
+            <div class="origem-header">
+              <img src="imgs/estatistica.png" alt="Ícone de origem" class="origem-icon">
+              <h2>ESTATÍSTICAS</h2>
+            </div>
+            <div id="container">
+              <p>As festas juninas no Brasil são uma celebração cultural de grande impacto, movimentando a economia de diversas cidades, especialmente no Nordeste. Com tradições como quadrilhas, comidas típicas e shows, essas festas atraem milhões de visitantes todos os anos.</p>
+            </div>
+            <p class="highcharts-description">Gráfico ilustrativo para analisar estimativas de lucro com as festas juninas</p>
+          </div>
+          <table>
+        <caption><strong>Dados por Cidade</strong></caption>
+        <thead>
+            <tr>
+                <th>Cidade</th>
+                <th>Movimentação Econômica (R$)</th>
+                <th>Número de Visitantes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Campina Grande</td>
+                <td>500 milhões</td>
+                <td>2 milhões</td>
+            </tr>
+            <tr>
+                <td>Caruaru</td>
+                <td>400 milhões</td>
+                <td>1,8 milhão</td>
+            </tr>
+            <tr>
+                <td>Salvador</td>
+                <td>300 milhões</td>
+                <td>1,5 milhão</td>
+            </tr>
+            <tr>
+                <td>São Luís</td>
+                <td>250 milhões</td>
+                <td>1 milhão</td>
+            </tr>
+            <tr>
+                <td>Petrolina</td>
+                <td>150 milhões</td>
+                <td>700 mil</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Tabela com estatísticas -->
+    <table>
+        <caption><strong>Estatísticas Calculadas</strong></caption>
+        <thead>
+            <tr>
+                <th>Indicador</th>
+                <th>Movimentação Econômica (R$)</th>
+                <th>Número de Visitantes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Média</td>
+                <td>R$ 320 milhões</td>
+                <td>1,4 milhão</td>
+            </tr>
+            <tr>
+                <td>Mediana</td>
+                <td>R$ 300 milhões</td>
+                <td>1,5 milhão</td>
+            </tr>
+        </tbody>
+    </table>
+           </div>
+        `;
+
+    // Renderiza o gráfico Highcharts para festas juninas
+    Highcharts.chart('container', {
+        title: {
+            text: 'Receita gerada pelas festas juninas (estimativas)',
+            align: 'center'
+        },
+        subtitle: {
+            text: '2016-2022',
+            align: 'center'
+        },
+        yAxis: {
+            title: {
+                text: 'Impacto econômico (R$)'
+            }
+        },
+        xAxis: {
+            categories: ['2016', '2018', '2020', '2022'],
+            title: {
+                text: 'Anos'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        series: [
+            {
+                name: 'Campina Grande',
+                data: [400000000, 450000000, 480000000, 500000000]
+            },
+            {
+                name: 'Caruaru',
+                data: [350000000, 370000000, 390000000, 400000000]
+            },
+            {
+                name: 'Salvador',
+                data: [250000000, 270000000, 290000000, 300000000]
+            },
+            {
+                name: 'São Luís',
+                data: [200000000, 220000000, 230000000, 250000000]
+            },
+            {
+                name: 'Petrolina',
+                data: [100000000, 120000000, 140000000, 150000000]
+            }
+        ],
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }
+            ]
+        }
+    });
+
+        
+      } else if (tab === "acidentes") {
+        tabContent.innerHTML = `
+        <div class="origem-content">
+  <div class="origem-header">
+    <img src="imgs/alert2.png" alt="Ícone de origem" class="origem-icon">
+    <h2>SEGURANÇA</h2>
+  </div>
+           </div>
+         <div class="origem-body">
+  <div class="slider">
+    <img src="imgs/festa1.jpg" alt="Primeira imagem" class="slider-image active">
+    <img src="imgs/festa2.jpg" alt="Segunda imagem" class="slider-image">
+    <div class="slider-buttons">
+      <button class="slider-prev" onclick="changeSlide(-1)">❮</button>
+      <button class="slider-next" onclick="changeSlide(1)">❯</button>
+    </div>
+  </div>
+  <!-- Alterar ordem: Mover o texto para baixo -->
+  <div class="origem-text">
+    
+    <p class="highlighted">Veja abaixo algumas medidas de segurança a serem observadas</p>
+  </div>
+</div>
+  <!-- Novo texto ao final -->
+  <div class="extra-text">
+    
+   <h3>Planejamento do Evento:</h3>
+  <div class="textoAbaixo">
+    <p>Comercialize fogos apenas em locais autorizados e com certificação de segurança.</p> 
+    <p>A estrutura das barracas, fogueiras e áreas de fogos deve seguir rigorosamente normas de segurança.</p>
+    <p>Exigência de brigadistas de incêndio e primeiros socorros (NR-23).</p>
+    </div>
+    <h3>Treinamento dos Trabalhadores:</h3>
+  
+    <div class="textoAbaixo"> 
+      <p>Treine os responsáveis para manusear fogos de artifício adequadamente e forneça equipamentos de proteção individual (EPIs), como luvas resistentes ao calor.</p>
+    <p>Manipuladores de alimentos e operadores de fogos precisam ser treinados sobre riscos e prevenção.</p>
+    <p>Uso obrigatório de EPI para manipulação de equipamentos ou fogos.</p>
+    </div>
+    <h3>Controle de multidões:</h3>
+  
+    <div class="textoAbaixo"> 
+    <p>Planejamento para evitar superlotação.</p>
+    <p>Saídas de emergência sinalizadas e acessíveis.</p>
+    </div>
+     <h3>Inspeção prévia:</h3>
+  
+    <div class="textoAbaixo"> 
+    <p>Verificação de instalações elétricas, barracas e armazenamento de materiais inflamáveis.</p>
+    <p>Tenha kits de primeiros socorros adequados para tratar queimaduras, cortes, intoxicações e desmaios.</p>
+    </div>
+  </div>
+</div>
+
+        `;
+      } else {
+        tabContent.innerHTML = `<p>Conteúdo para a aba "${tab.toUpperCase()}" ainda está em construção.</p>`;
+      }
+    }
+    window.onload = function() {
+    changeContent('origem');
+  };
+  </script>
+  
+</body>
+</html>
